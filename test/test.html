@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+
+        .exchange_img{
+            /*width: 100%;*/
+            width: 1250px;
+            height: 500px;
+            margin: auto;       /*水平居中*/
+        }
+        .change_photo{
+            width: 100%;
+            height: 100%;
+            {#background: url("../static/img/homepage/当归饮片.jpg");#}
+            {#background-size: 100% 100%;#}
+        }
+        .change_photo img{
+            float: left;
+            width: 100%;
+            height: 100%;
+        }
+
+        .exchange_img .pre{
+            float: left;
+            color: rgb(122,176,56);
+            font-size: 48px;
+            margin-left: 270px;
+            margin-top: 210px;
+            opacity: 0.5;
+        }
+        .exchange_img .after{
+            float: left;
+            color: rgb(122,176,56);
+            font-size: 48px;
+            margin-left: 900px;
+            margin-top: 210px;
+            opacity: 0.5;
+        }
+        .exchange_img .circle_change{
+            float: left;
+            margin-left: 1100px;
+            margin-top: 200px;
+        }
+        .exchange_img .radius{
+            width: 8px;
+            height: 8px;
+            border-radius: 8px;
+            border: solid limegreen 1px;
+            list-style-type:none;
+            float: left;
+            margin-left: 15px;
+        }
+        .exchange_img .left_box{
+            float: left;
+            width: 260px;
+            height: 500px;
+            background: rgba(122,176,56,0.3);
+        }
+        .exchange_img .classification{
+            margin: 0;
+            width: 260px;
+            height: 50px;
+            line-height: 50px;
+            {#border: solid limegreen 1px;#}
+        }
+        .exchange_img .classification a{
+            margin-left: 30px;
+            color: #ede7d4;
+        }
+        .exchange_img .classification:hover{
+            background: limegreen;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="exchange_img">
+        <div class="change_photo">
+            <img src="../static/img/homepage/当归饮片.jpg" alt="">
+            <div style="position: absolute" class="left_box">
+                <p class="classification">
+                    <a href="">根及根茎类</a>
+                </p>
+                <p class="classification">
+                    <a href="">茎木类</a>
+                </p>
+                <p class="classification">
+                    <a href="">皮类</a>
+                </p>
+                <p class="classification">
+                    <a href="">叶类</a>
+                </p>
+                <p class="classification">
+                    <a href="">花类</a>
+                </p>
+                <p class="classification">
+                    <a href="">果实及种子类</a>
+                </p>
+                <p class="classification">
+                    <a href="">全草类</a>
+                </p>
+                <p class="classification">
+                    <a href="">动物类</a>
+                </p>
+                <p class="classification">
+                    <a href="">矿物类</a>
+                </p>
+                <p class="classification">
+                    <a href="">其他类</a>
+                </p>
+            </div>
+            <span class="pre">&lt;</span>
+            <span class="after">&gt;</span>
+            <div class="circle_change">
+                <li class="radius" style="background: rgb(122,176,56)"></li>
+                <li class="radius"></li>
+                <li class="radius"></li>
+                <li class="radius"></li>
+            </div>
+        </div>
+    </div>
+
+<script rel="stylesheet" src="../static/js/photo_change.js">
+</script>
+
+</body>
+</html>

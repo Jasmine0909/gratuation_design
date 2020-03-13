@@ -51,6 +51,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+# 将session保存在数据库，默认方式
+SESSION_ENGING = 'django.contrib.session.backend.db'
+
 ROOT_URLCONF = 'gratuation.urls'
 
 TEMPLATES = [

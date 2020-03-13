@@ -1,11 +1,11 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from myapp.views import homepage
 
 urlpatterns = [
     # Examples:
-    url(r'^$', 'gratuation.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
-    url(r'urls/', include('myapp.urls'))
+
+    url(r'^$', homepage),
+    url(r'^medicine/', include('myapp.urls')),
 ]
