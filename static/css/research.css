@@ -1,0 +1,39 @@
+.body_research{
+    width: 100%;
+    height: 550px;
+    background: #d2ffd9;
+}
+.body_research ul{
+    margin-left: 110px;
+    margin-right: 100px;
+    padding-top: 50px;
+}
+.body_research li{
+    width: 220px;
+    height: 350px;
+    background: white;
+    float: left;
+    border: lightgreen solid 1px;
+    list-style: none;
+    text-align:center;
+    margin-left: 50px;
+}
+
+.body_research li img{
+    width: 180px;
+    height: 200px;
+    margin-top: 20px;
+}
+.body_research li p{
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: "Adobe 黑体 Std R";
+    font-weight: bold;
+}
+.body_research li span{
+    font-size: 10px;
+    font-family: "Adobe 黑体 Std R";
+    color: limegreen;
+    margin-left: 5px;
+    margin-right: 5px;
+}

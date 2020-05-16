@@ -1,15 +1,11 @@
 var r = document.getElementsByClassName('radius');
 var photo = document.getElementsByClassName('change_photo');
-var pre = document.getElementsByClassName('left_bracket');
-var after = document.getElementsByClassName('right_bracket');
-
 var index=1;
 
 setInterval(changeImg,3000);
 
 function changeImg(){
     index++;
-
     for(var j=0;j<4;j++){
         r[j].style.background = 'rgba(122,176,56,0)';
     }

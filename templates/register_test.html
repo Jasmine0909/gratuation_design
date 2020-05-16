@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>中药饮片_登录</title>
+    <title>中药饮片_注册</title>
     <link rel="stylesheet" href="../static/css/login.css">
     <link rel="stylesheet" href="../static/css/base.css">
     <link rel="shortcut icon" href="../static/img/logo01.jpg" type="imsge/x-icon">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1637842_lr21t8lnaag.css">
 </head>
-
 <body>
-<form method="post" action="">
 <div>
     <div class="top_box">
         <a href="/medicine/homepage" style="margin-left: 60px">首页</a>
@@ -22,19 +20,27 @@
     <div class="body_box">
         <div class="login_box">
             <a href="" class="login_font">
-                <p>账号登录</p>
+                <p>账号注册</p>
             </a>
             <div class="tips_register">
-                {% if is_login == "password_error" %}
-                    <span>密码错误，请重新输入</span>
-                {% elif is_login == "username_not_exist" %}
-                    <span>用户名不存在</span>
+                {% if is_login == 'username_exist' %}
+                    <span>用户名已存在</span>
+                {% elif is_login == 'username_none' %}
+                    <span>用户名不能为空</span>
+                {% elif is_login == 'password_none' %}
+                    <span>密码不能为空</span>
+                {% elif is_login == 'password_different' %}
+                    <span>请输入相同的密码</span>
                 {% endif %}
             </div>
+            <input type="text" name="telephone" placeholder="请输入你的手机号" style="margin: 0"><br>
+            <input type="text" name="code" placeholder="请输入验证码" style="width: 270px;">
+            <input type="button" value="获取验证码" style="width: 75px; height: 47px; margin-top: 2px"><br>
             <input type="text" name="username" placeholder="请输入你的用户名"><br>
-            <input type="password" name="password" placeholder="请输入你的密码"><br>
-            <input type="submit" value="登录" style="color: white;background: #158e2f;width: 353px;height: 47px;"><br>
-            <a href="register.html" class="login_font_litter">没有账号？立即注册</a>
+            <input type="text" name="password" placeholder="请输入你的密码"><br>
+            <input type="text" name="password_again" placeholder="请再次输入你的密码"><br>
+            <input type="button" value="注册" style="color: white;background: #158e2f;width: 353px;height: 47px;"><br>
+            <a href="login.html" class="login_font_litter">已有账号？立即登录</a>
         </div>
         <img src="../static/img/本草纲目素材.jpg" alt="" style="float: left" class="img_font">
         <img src="../static/img/李时珍素材.png" alt="" class="img_lee">
@@ -59,7 +65,7 @@
         </div>
     </div>
 </div>
-</form>
+
 
 </body>
 </html>

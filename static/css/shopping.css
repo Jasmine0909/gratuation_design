@@ -1,0 +1,20 @@
+.shopping_cart{
+    width: 100%;
+    background: #d2ffd9;
+}
+.shopping_cart ul{
+    width: 100%;
+    padding-top: 50px;
+}
+.shopping_cart ul li{
+    width: 800px;
+    height: 200px;
+    margin: auto;
+    border: solid 1px limegreen;
+    list-style: none;
+}
+.shopping_cart ul li img{
+    line-height: 200px;
+    width: 160px;
+    height: 160px;
+}

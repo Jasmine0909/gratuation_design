@@ -1,0 +1,31 @@
+.detail_background{
+    width: 100%;
+    /*background: url("/static/img/详情页背景.jpg");*/
+    background: lightgreen;
+}
+.detail_background .detail_box{
+    width: 900px;
+    height: 100%;
+    margin: auto;
+    border: 1px solid #dddddd;
+    /*background: greenyellow;*/
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.detail_background .detail_box img{
+    width: 60%;
+    margin: auto;
+}
+.detail_background .detail_box span{
+    /*color: green;*/
+}
+
+.cart{
+    width: 100px;
+    height: 30px;
+    background: limegreen;
+    border: solid 1px limegreen;
+    color: white;
+    margin-left: 10px;
+}
