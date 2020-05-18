@@ -29,3 +29,11 @@
     color: white;
     margin-left: 10px;
 }
+.buy{
+    width: 100px;
+    height: 30px;
+    background: limegreen;
+    border: solid 1px limegreen;
+    color: white;
+    margin-left: 10px;
+}

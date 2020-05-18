@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1637842_lr21t8lnaag.css">
 </head>
 <body>
+
 <div>
     <div class="top_box">
         <a href="/medicine/homepage" style="margin-left: 60px">&lt;&lt;&lt;返回首页</a>
@@ -17,27 +18,21 @@
 
     <div class="body_research">
         <ul>
-            <li>
-                <img src="../static/img/others/石膏饮片.jpg" alt="">
-                <p>石膏饮片</p>
-                <span>清热泻火，除烦止咳，收敛生肌</span>
-            </li>
-            <li>
-                <img src="../static/img/others/知母饮片.jpg" alt="">
-                <p>知母饮片</p>
-                <span>清热泻火，滋阴润喉</span>
-            </li>
-            <li>
-                <img src="../static/img/others/栀子饮片.jpg" alt="">
-                <p>栀子饮片</p>
-                <span>泻火除烦， 清热利湿 ，凉血解毒，消肿止痛</span>
-            </li>
-            <li>
-                <img src="../static/img/others/决明子饮片.jpg" alt="">
-                <p>决明子饮片</p>
-                <span>清肝明目，润肠通便</span>
-            </li>
-        </ul>
+            {% if medicine == '' %}
+                <h2 style="color: black">什么都没有找到</h2>
+            {% else %}
+                {% for result in medicine %}
+                    <li>
+                        <a href="/medicine/details/{{ result.id }}">
+                            <img src="../static/img/others/{{ result.name }}.jpg" alt="">
+                            <p>{{ result.name }}</p>
+                            <span>{{ result.function|truncatechars:'30' }}</span><br>
+                            <span style="color: black;">¥{{ result.price }}元/500g</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+	    </ul>
     </div>
 
 
@@ -55,7 +50,7 @@
         </div>
         <div class="bottom_font">
             <span>
-                Copyright&copy;2019 - 2020 湖南文理学院数理学院.All Right Reserved
+                Copyright&copy;2019 - 2020 湖南文理学院电信16102班熊思佳.All Right Reserved
             </span>
         </div>
     </div>

@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from .views import homepage, login, register, shopping, details, news, recommend
+from .views import homepage, login, register, shopping, details,\
+    news, recommend, research
 
 # urlpatterns = [
 #     url(r'^index/(\d+)', paginator_index),
@@ -16,8 +17,9 @@ urlpatterns = [
     url(r'^homepage', homepage),
     url(r'^login', login),
     url(r'^register', register),
-    url(r'^shopping', shopping),
-    url(r'^details', details),
+    url(r'^shopping/([\u4E00-\u9FA5])', shopping),
+    url(r'^research/([\u4E00-\u9FA5])', research),
+    url(r'^details/(\d+)', details),
     url(r'^news', news),
     url(r'^recommend', recommend),
 ]

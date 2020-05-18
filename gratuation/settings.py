@@ -40,17 +40,19 @@ INSTALLED_APPS = (
     'myapp',
 )
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = (
+
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-]
-
+)
 # 将session保存在数据库，默认方式
 SESSION_ENGING = 'django.contrib.session.backend.db'
 
@@ -86,6 +88,12 @@ DATABASES = {
     }
 }
 
+
+# STATICFILES_DIRS = (
+#     ('css', 'D:\python\graduation\gratuation_design\static\css'.replace('\\', '/')),
+#     ('js', 'D:\python\graduation\gratuation_design\static\js'.replace('\\', '/')),
+#     ('img', 'D:\python\graduation\gratuation_design'.replace('\\', '/')),
+# )
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

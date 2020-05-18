@@ -20,18 +20,17 @@
 
     <div class="shopping_cart">
         <ul>
-            <li>
-                <img src="../static/img/others/人参饮片.jpg" alt="">
-            </li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            {% for i in medicine %}
+                <li>
+                    <img src="../{{ i.name }}.jpg" alt="">
+                    <div class="cart_font">
+                        <h3>{{ i.name }}</h3><br>
+                        <p>{{ i.function|truncatechars:'30' }}</p><br>
+                        <span>¥{{ i.price }}</span><br>
+                        <input type="button" value="立即购买" class="buy">
+                    </div>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 
@@ -49,13 +48,16 @@
         </div>
         <div class="bottom_font">
             <span>
-                Copyright&copy;2019 - 2020 湖南文理学院数理学院.All Right Reserved
+                Copyright&copy;2019 - 2020 湖南文理学院电信16102班熊思佳.All Right Reserved
             </span>
         </div>
     </div>
 </div>
 
-<script rel="stylesheet" src="../static/js/photo_change_test.js">
+<script>
+    $('.buy').click(function () {
+        alert('暂时还不能购买哦')
+    });
 </script>
 
 </body>

@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^$', homepage),
     # url(r'^search/', include('haystack.urls')),
     url(r'^medicine/', include('myapp.urls')),
-
+    # url(r'^search/', include('haystack.urls')),
 ]

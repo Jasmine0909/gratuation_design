@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1637842_lr21t8lnaag.css">
 </head>
 <body>
+<form method="post" action="">
 <div>
     <div class="top_box">
         <a href="/medicine/homepage" style="margin-left: 60px">首页</a>
@@ -27,8 +28,16 @@
             <div class="homepage_top_font">
                 <a href="/medicine/recommend">今日推荐</a>
                 <a href="/medicine/news">相关热点新闻</a>
-                <input type="button" class="search" value="搜索">
-                <input type="text" placeholder="人参" class="search_box">
+                <input type="submit" class="search" value="搜索">
+                <input type="text" placeholder="人参" name="content" class="search_box" id="search">
+                <script type="text/javascript">
+                    function getkey(a) {
+                        var pms = document.getElementById("search").value;
+                        if(pms==='')
+                            pms = '人参';
+                        a.href = '/medicine/research/' + pms;
+                    }
+                </script>
             </div>
         </div>
         <div class="exchange_img">
@@ -112,7 +121,7 @@
         </div>
         <div class="bottom_font">
             <span>
-                Copyright&copy;2019 - 2020 湖南文理学院数理学院.All Right Reserved
+                Copyright&copy;2019 - 2020 湖南文理学院电信16102班熊思佳.All Right Reserved
             </span>
         </div>
     </div>
@@ -120,6 +129,6 @@
 
 <script rel="stylesheet" src="../static/js/photo_change.js">
 </script>
-
+</form>
 </body>
 </html>

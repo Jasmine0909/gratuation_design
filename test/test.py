@@ -1,29 +1,54 @@
-# from twilio.rest import Client
-# # Your Account SID from twilio.com/console
-# account_sid = "替换成你的ACCOUNT_SID"
-# # Your Auth Token from twilio.com/console
-# auth_token  = "替换成你的auth_token"
-# client = Client(account_sid, auth_token)
-# message = client.messages.create(
-#     to="+86xxxxxxxxxxx,替换成注册的手机号，也就是要接收短信的手机号，中国区是+86",
-#     from_="+15017250604，替换成你的twilio phone number，twilio分配给你的",
-#     body="Hello from Python Twilio!")
+dbname = 'db.sqlite3'
+dbpath = 'D:\\python\\graduation\\gratuation_design'
+csvpath = pspath
 
-# Download the helper library from https://www.twilio.com/docs/python/install
-from twilio.rest import Client
+# custom thread number
+tnum = 20
+hvsrvs_all = hvsrvs.objects.all()
+serverips = []
+# ls = []
+for hvsrv in hvsrvs_all:
+    Phy_ServerIP = hvsrv.serverip
+    serverips.append(Phy_ServerIP)
 
+for ips in lstg(tnum, serverips):
+    threads = []
 
-# Your Account Sid and Auth Token from twilio.com/console
-# DANGER! This is insecure. See http://twil.io/secure
-account_sid = 'ACdc9494c488731599a68343bf2f07400b'
-auth_token = 'your_auth_token'
-client = Client(account_sid, auth_token)
+    for Phy_ServerIP in ips:
+        # print Phy_ServerIP
+        t = threading.Thread(target=GetVMs, args=(PS_GetVMs, Phy_ServerIP))
+        t.setDaemon(True)
+        t.start()
+        threads.append(t)
+    for t in threads:
+        t.join()
 
-message = client.messages \
-                .create(
-                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
-                     from_='+15017122661',
-                     to='+18229698916'
-                 )
+sql_insert = '''insert into sinfors_hvvms values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'''
+conn = sqlite3.connect(dbpath)
+cu = conn.cursor()
+datas = []
+i = 1
+for csvf in os.listdir(csvpath):
+    if os.path.splitext(csvf)[0].startswith('queryresult-') and os.path.splitext(csvf)[1] == '.csv':
+        csvfile = os.path.join(csvpath, csvf)
+        # print csvfile
+        cf = open(csvfile)
+        cf.readline()
 
-print(message.sid)
+        for l in csv.reader(cf):
+            l.insert(0, i)
+            i = i + 1
+            datas.append(tuple(l))
+        cf.close()
+        # print csvfile
+        os.remove(csvfile)
+# print datas
+if len(datas) > 0:
+    cu.execute('delete from sinfors_hvvms')
+    conn.commit()
+    for data in datas:
+        cu.execute(sql_insert, data)
+
+    conn.commit()
+    cu.execute('select * from sinfors_hvvms')
+    cu.close()

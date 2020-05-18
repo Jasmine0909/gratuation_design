@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from myapp.models import User, Goods
+from django.shortcuts import render, redirect, HttpResponse
+from myapp.models import User, Goods, Order
 import hashlib
 
 # Create your views here.
@@ -10,13 +10,39 @@ def homepage(request):
         return render(request, "homepage.html")
         # return redirect(request, "/medicine")
     elif request.method == 'POST':
-        research(request)
+        # 首页中如果有Post的实现就是搜索功能
+        try:
+            content_info = request.POST
+            content = content_info.get("content")
+            if content == '':
+                content = "人参"
+            # 查找Goods表中的所有数据
+            goods = Goods.objects.all()
+            medicine = []
+            for i in goods:
+                if content in i.name or content in i.function.split('，'):
+                    medicine.append(i)
+        except:
+            medicine = ''
+        # research(request, medicine)
+        return render(request, "research.html", context={"medicine": medicine})
 
 
-def research(request):
-    word = request.POST
-
-    pass
+def research(request, content):
+    if request.method == "GET":
+        try:
+            if content == '':
+                content = "人参"
+            # 查找Goods表中的所有数据
+            goods = Goods.objects.all()
+            medicine = []
+            for i in goods:
+                if content in i.name or content in i.function.split('，'):
+                    medicine.append(i)
+        except:
+            medicine = ''
+        # print("***************", medicine)
+        return render(request, "research.html", context={"medicine": medicine})
 
 
 def login(request):
@@ -48,7 +74,7 @@ def login(request):
 def register(request):
     if request.method == "GET":
         return render(request, "register.html")
-    if request.method == "POST":
+    elif request.method == "POST":
         user_info = request.POST
         # telephone = user_info.get("telephone")
         username = user_info.get("username")
@@ -80,17 +106,26 @@ def register(request):
                     return render(request, 'homepage.html', context={'username': username})
 
 
-def shopping(request):
-    return render(request, "shopping.html")
+def shopping(request, user):
+    if user == '':
+        return HttpResponse('请先登录')
+    else:
+        order = Order.objects.all()
+        goods = []
+        medicine = []
+        for i in order:
+            if i.name == user:
+                goods.append(i)
+        for j in goods:
+            message = Goods.objects.get(price=j.total)
+            medicine.append(message)
+        return render(request, "shopping.html", context={"medicine": medicine})
 
 
-def details(request):
+def details(request, num):
     if request.method == "GET":
-        return render(request, "details.html")
-    elif request.method == "POST":
-        # 实现将此商品的信息存入数据库的功能，前端界面保持不动，只出现弹窗
-        # return render(request, "details.html")
-        pass
+        medicine = Goods.objects.get(id=num)
+        return render(request, "details.html", context={"medicine": medicine})
 
 
 def news(request):
